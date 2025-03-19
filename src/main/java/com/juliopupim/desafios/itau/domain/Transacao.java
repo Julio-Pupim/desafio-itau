@@ -1,5 +1,6 @@
 package com.juliopupim.desafios.itau.domain;
 
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import lombok.EqualsAndHashCode;
@@ -9,7 +10,9 @@ import lombok.Getter;
 @EqualsAndHashCode
 public class Transacao {
 
+  @NotNull
   private final BigDecimal valor;
+  @NotNull
   private final OffsetDateTime dataHora;
 
   private Transacao(BigDecimal valor, OffsetDateTime dataHora) {
@@ -17,9 +20,10 @@ public class Transacao {
     this.dataHora = dataHora;
   }
 
-  public static void of(BigDecimal valor, OffsetDateTime dataHora) {
+  public static Transacao of(BigDecimal valor, OffsetDateTime dataHora) {
     validaDataHora(dataHora);
     validaValor(valor);
+    return new Transacao(valor, dataHora);
   }
 
   private static void validaValor(BigDecimal valor) {
