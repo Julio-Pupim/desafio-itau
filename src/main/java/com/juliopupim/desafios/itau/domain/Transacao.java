@@ -3,6 +3,7 @@ package com.juliopupim.desafios.itau.domain;
 import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.Objects;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
@@ -21,9 +22,19 @@ public class Transacao {
   }
 
   public static Transacao of(BigDecimal valor, OffsetDateTime dataHora) {
+    validarNulos(valor, dataHora);
     validaDataHora(dataHora);
     validaValor(valor);
     return new Transacao(valor, dataHora);
+  }
+
+  private static void validarNulos(BigDecimal valor, OffsetDateTime dataHora) {
+    if (Objects.isNull(valor)) {
+      throw new IllegalArgumentException("O valor não pode ser nulo");
+    }
+    if (Objects.isNull(dataHora)) {
+      throw new IllegalArgumentException("A data da transação não pode ser nula");
+    }
   }
 
   private static void validaValor(BigDecimal valor) {

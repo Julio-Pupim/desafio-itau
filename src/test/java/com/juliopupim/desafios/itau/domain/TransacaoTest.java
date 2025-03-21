@@ -21,4 +21,18 @@ public class TransacaoTest {
         .isInstanceOf(
             IllegalArgumentException.class).hasMessage("O valor não pode ser negativo");
   }
+
+  @Test
+  public void naoDeveAceitarValoresNulos() {
+    Assertions.assertThatThrownBy(
+            () -> Transacao.of(null, OffsetDateTime.now().minusDays(1)))
+        .isInstanceOf(
+            IllegalArgumentException.class).hasMessage("O valor não pode ser nulo");
+
+    Assertions.assertThatThrownBy(
+            () -> Transacao.of(BigDecimal.TEN, null))
+        .isInstanceOf(
+            IllegalArgumentException.class).hasMessage("A data da transação não pode ser nula");
+  }
+
 }
