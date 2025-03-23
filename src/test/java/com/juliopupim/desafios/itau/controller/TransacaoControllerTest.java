@@ -1,9 +1,14 @@
 package com.juliopupim.desafios.itau.controller;
 
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.juliopupim.desafios.itau.domain.Transacao;
+import com.juliopupim.desafios.itau.service.TransacaoService;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.DoubleSummaryStatistics;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,6 +19,7 @@ import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -25,6 +31,8 @@ public class TransacaoControllerTest {
 
   private MockMvc mockMvc;
 
+  @MockitoBean
+  private TransacaoService transacaoService;
 
   @Autowired
   private TransacaoController transacaoController;
@@ -87,10 +95,37 @@ public class TransacaoControllerTest {
   }
 
   @Test
+  public void deveTrazerEstatisca() throws Exception {
+    DoubleSummaryStatistics estatisticaMock = new DoubleSummaryStatistics();
+    estatisticaMock.accept(10.0);
+    estatisticaMock.accept(20.0);
+    estatisticaMock.accept(30.0);
+
+    when(transacaoService.calculaEstatistica()).thenReturn(estatisticaMock);
+
+    MockHttpServletResponse response = mockMvc.perform(
+            MockMvcRequestBuilders.get("/estatistica")
+                .contentType(MediaType.APPLICATION_JSON))
+        .andReturn()
+        .getResponse();
+
+    Assertions.assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
+    Assertions.assertThat(response.getContentAsString()).contains("\"count\":3");
+    Assertions.assertThat(response.getContentAsString()).contains("\"sum\":60.0");
+    Assertions.assertThat(response.getContentAsString()).contains("\"average\":20.0");
+    Assertions.assertThat(response.getContentAsString()).contains("\"min\":10.0");
+    Assertions.assertThat(response.getContentAsString()).contains("\"max\":30.0");
+
+  }
+
+
+  @Test
   public void deleteTransacao() throws Exception {
     MockHttpServletResponse response = mockMvc.perform(MockMvcRequestBuilders.delete("/transacao"))
         .andReturn()
         .getResponse();
+
+    verify(transacaoService).deleteAll();
 
     Assertions.assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
     Assertions.assertThat(response.getContentAsString()).isEmpty();

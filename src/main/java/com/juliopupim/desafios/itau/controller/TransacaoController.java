@@ -4,11 +4,13 @@ import com.juliopupim.desafios.itau.domain.Transacao;
 import com.juliopupim.desafios.itau.domain.dto.TransacaoRequestDTO;
 import com.juliopupim.desafios.itau.service.TransacaoService;
 import jakarta.validation.Valid;
+import java.util.DoubleSummaryStatistics;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class TransacaoController {
 
   private final TransacaoService transacaoService;
+
+
+  @GetMapping("/estatistica")
+  public ResponseEntity<DoubleSummaryStatistics> getEstatistica() {
+    return ResponseEntity.ok(transacaoService.calculaEstatistica());
+  }
 
   @PostMapping("/transacao")
   public ResponseEntity<Transacao> salvarTransacao(
