@@ -3,6 +3,8 @@ package com.juliopupim.desafios.itau.controller;
 import com.juliopupim.desafios.itau.domain.Transacao;
 import com.juliopupim.desafios.itau.domain.dto.TransacaoRequestDTO;
 import com.juliopupim.desafios.itau.service.TransacaoService;
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.Timer;
 import jakarta.validation.Valid;
 import java.util.DoubleSummaryStatistics;
 import lombok.AllArgsConstructor;
@@ -21,11 +23,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class TransacaoController {
 
   private final TransacaoService transacaoService;
+  private final MeterRegistry meterRegistry;
 
 
   @GetMapping("/estatistica")
   public ResponseEntity<DoubleSummaryStatistics> getEstatistica() {
-    return ResponseEntity.ok(transacaoService.calculaEstatistica());
+    return Timer.builder("estatistica")
+        .description("Tempo Gasto para calcular estatística")
+        .register(meterRegistry).record(() -> ResponseEntity.ok(
+            transacaoService.calculaEstatistica()));
   }
 
   @PostMapping("/transacao")
