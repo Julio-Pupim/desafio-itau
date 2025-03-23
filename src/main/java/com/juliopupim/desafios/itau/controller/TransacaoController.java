@@ -39,14 +39,8 @@ public class TransacaoController {
   @PostMapping("/transacao")
   public ResponseEntity<Transacao> salvarTransacao(
       @RequestBody @Valid TransacaoRequestDTO transacaoDTO) {
-    try {
-      transacaoService.save(transacaoDTO);
-      return ResponseEntity.status(HttpStatus.CREATED).build();
-    } catch (IllegalArgumentException ex) {
-      log.error("O objeto enviado está inválido: {} {}",
-          transacaoDTO, ex.toString());
-      return ResponseEntity.unprocessableEntity().build();
-    }
+    transacaoService.save(transacaoDTO);
+    return ResponseEntity.status(HttpStatus.CREATED).build();
   }
 
   @DeleteMapping("/transacao")
