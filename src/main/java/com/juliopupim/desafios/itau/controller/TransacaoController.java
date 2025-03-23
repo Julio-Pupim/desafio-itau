@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -27,11 +28,12 @@ public class TransacaoController {
 
 
   @GetMapping("/estatistica")
-  public ResponseEntity<DoubleSummaryStatistics> getEstatistica() {
+  public ResponseEntity<DoubleSummaryStatistics> getEstatistica(
+      @RequestParam(defaultValue = "1") Long tempo) {
     return Timer.builder("estatistica")
         .description("Tempo Gasto para calcular estatística")
         .register(meterRegistry).record(() -> ResponseEntity.ok(
-            transacaoService.calculaEstatistica()));
+            transacaoService.calculaEstatistica(tempo)));
   }
 
   @PostMapping("/transacao")

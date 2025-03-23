@@ -1,5 +1,6 @@
 package com.juliopupim.desafios.itau.controller;
 
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -101,7 +102,7 @@ public class TransacaoControllerTest {
     estatisticaMock.accept(20.0);
     estatisticaMock.accept(30.0);
 
-    when(transacaoService.calculaEstatistica()).thenReturn(estatisticaMock);
+    when(transacaoService.calculaEstatistica(anyLong())).thenReturn(estatisticaMock);
 
     MockHttpServletResponse response = mockMvc.perform(
             MockMvcRequestBuilders.get("/estatistica")

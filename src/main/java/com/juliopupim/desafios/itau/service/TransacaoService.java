@@ -29,9 +29,9 @@ public class TransacaoService {
     id++;
   }
 
-  public DoubleSummaryStatistics calculaEstatistica() {
-    OffsetDateTime ultimoMinuto = OffsetDateTime.now().minusMinutes(1);
-    List<BigDecimal> allOnLastMinute = getAllOnLastMinute(ultimoMinuto);
+  public DoubleSummaryStatistics calculaEstatistica(Long tempo) {
+    OffsetDateTime minusedMinutes = OffsetDateTime.now().minusMinutes(tempo);
+    List<BigDecimal> allOnLastMinute = getAllOnPassTime(minusedMinutes);
     DoubleSummaryStatistics estatistica = new DoubleSummaryStatistics();
     allOnLastMinute.forEach(valor -> estatistica.accept(valor.doubleValue()));
     return estatistica;
@@ -46,7 +46,7 @@ public class TransacaoService {
     return transacaoMap.values().stream().toList();
   }
 
-  private List<BigDecimal> getAllOnLastMinute(OffsetDateTime minuto) {
+  private List<BigDecimal> getAllOnPassTime(OffsetDateTime minuto) {
     return transacaoMap.values().stream()
         .filter(transacao -> transacao.getDataHora().isAfter(minuto)).map(Transacao::getValor)
         .toList();

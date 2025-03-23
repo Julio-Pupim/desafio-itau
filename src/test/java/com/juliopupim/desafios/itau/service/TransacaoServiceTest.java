@@ -39,7 +39,7 @@ public class TransacaoServiceTest {
   @Test
   void deveTrazerEstraticaUltimoMinuto() {
     createListTransacao();
-    DoubleSummaryStatistics doubleSummaryStatistics = transacaoService.calculaEstatistica();
+    DoubleSummaryStatistics doubleSummaryStatistics = transacaoService.calculaEstatistica(1L);
     assertThat(doubleSummaryStatistics.getAverage()).isEqualTo(37.0);
     assertThat(doubleSummaryStatistics.getCount()).isEqualTo(3L);
     assertThat(doubleSummaryStatistics.getMin()).isEqualTo(1.0);
