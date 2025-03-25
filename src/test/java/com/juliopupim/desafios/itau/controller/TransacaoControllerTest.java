@@ -1,11 +1,15 @@
 package com.juliopupim.desafios.itau.controller;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.juliopupim.desafios.itau.domain.Transacao;
+import com.juliopupim.desafios.itau.domain.dto.TransacaoRequestDTO;
+import com.juliopupim.desafios.itau.exceptions.GlobalExceptionHandler;
 import com.juliopupim.desafios.itau.service.TransacaoService;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
@@ -46,7 +50,9 @@ public class TransacaoControllerTest {
   @BeforeEach
   public void setUp() {
     JacksonTester.initFields(this, objectMapper);
-    mockMvc = MockMvcBuilders.standaloneSetup(transacaoController).build();
+    mockMvc = MockMvcBuilders.standaloneSetup(transacaoController)
+        .setControllerAdvice(new GlobalExceptionHandler())
+        .build();
   }
 
 
@@ -82,6 +88,10 @@ public class TransacaoControllerTest {
   @Test
   public void deveLancarErro422() throws Exception {
     String jsonInvalido = "{ \"valor\": -10.0, \"dataHora\": \"2024-03-20T10:00:00Z\"}";
+
+    doThrow(new IllegalArgumentException("O valor não pode ser negativo"))
+        .when(transacaoService)
+        .save(any(TransacaoRequestDTO.class));
 
     MockHttpServletResponse response = mockMvc.perform(
             MockMvcRequestBuilders.post("/transacao")
