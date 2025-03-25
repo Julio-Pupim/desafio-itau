@@ -13,7 +13,7 @@ Este projeto é uma solução para o [Desafio Técnico Itaú Backend](https://gi
   - [Spring Actuator](#spring-actuator)
   - [Swagger](#swagger)
 - [Vídeo Explicativo](#vídeo-explicativo)
-- [Links de Referência](#links-de-referência)
+- [Aprendizados](#Aprendizados)
 
 ---
 ## Proposta do Projeto
@@ -112,23 +112,18 @@ Para uma explicação detalhada sobre o projeto, incluindo a arquitetura, decis�
 
 ---
 
-## Links de Referência
+## Aprendizados
+  Durante o desafio tive que aprender sobre novas bibliotecas e ferramentas, para isso pesquisei bastante, reuni alguns dos links que acessei para que possam ajudar você a estudar esses assuntos também:
+- swagger: O que é? Como configurar e como usar. [Link para estudo](https://medium.com/@f.s.a.kuzman/using-swagger-3-in-spring-boot-3-c11a483ea6dc)
+- Logs: como funciona? Quais bibliotecas usar? [video explicado bibliotecas de log](https://www.youtube.com/watch?v=SWHYrCXIL38&t=420s&ab_channel=JavaBrains), [Artigo explicando](https://springframework.guru/using-logback-spring-boot/)
+- Healtcheck endpoints: o que é? Como implementar? [Artigo](https://devkico.itexto.com.br/?p=3205) 
+- perfomance. Como fazer medidas no endpoint? [Estude sobre micrometer](https://www.youtube.com/watch?v=RAqG4XaTgv4&ab_channel=LinhVu)
+- Docker CLI. [Containerize a Java application](https://docs.docker.com/guides/java/containerize/)
 
-A seguir, uma lista de recursos úteis para aprofundar o conhecimento nos tópicos abordados neste projeto:
-
+Outros links também importante:
 - [Documentação Oficial do Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/)
 - [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html)
 - [Swagger com Spring Boot](https://springdoc.org/)
 - [Docker para Desenvolvedores Java](https://www.docker.com/blog/java-developers-guide-to-docker/)
-- [Java 21 - Novidades e Melhorias](https://openjdk.java.net/projects/jdk/21/)
 
 ---
-
-Este projeto foi desenvolvido para demonstrar habilidades técnicas em Java e Spring Boot, além de aplicar boas práticas no desenvolvimento de APIs RESTful. Explore o código, execute a aplicação e utilize os recursos fornecidos para aprender mais sobre o tema. Em caso de dúvidas ou sugestões, sinta-se à vontade para abrir uma issue no repositório.
-
-**Autor:** [Seu Nome]  
-**Data:** 23 de março de 2025
-
---- 
-
-Esse README atende ao seu roteiro e inclui detalhes adicionais para garantir clareza e utilidade. Substitua placeholders como "link-para-o-print-do-swagger" e "link-do-video" pelos links reais ao implementar.
