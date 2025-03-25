@@ -100,7 +100,7 @@ O Swagger documenta e permite testar os endpoints da API de forma interativa. A 
 
 Veja abaixo um print da interface do Swagger:
 
-![Swagger UI](link-para-o-print-do-swagger)
+![swagger](https://github.com/user-attachments/assets/25f78549-0218-4b82-8203-33c00ddde222)
 
 ---
 
