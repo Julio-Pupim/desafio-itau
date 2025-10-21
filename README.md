@@ -108,7 +108,7 @@ Veja abaixo um print da interface do Swagger:
 
 Para uma explicação detalhada sobre o projeto, incluindo a arquitetura, decisões de design e uma demonstração prática, assista ao vídeo abaixo:
 
-[Futuro](https://www.youtube.com/link-do-video)
+[em breve](https://www.youtube.com/link-do-video)
 
 ---
 
@@ -116,8 +116,8 @@ Para uma explicação detalhada sobre o projeto, incluindo a arquitetura, decis�
   Durante o desafio tive que aprender sobre novas bibliotecas e ferramentas, para isso pesquisei bastante, reuni alguns dos links que acessei para que possam ajudar você a estudar esses assuntos também:
 - swagger: O que é? Como configurar e como usar. [Link para estudo](https://medium.com/@f.s.a.kuzman/using-swagger-3-in-spring-boot-3-c11a483ea6dc)
 - Logs: como funciona? Quais bibliotecas usar? [video explicado bibliotecas de log](https://www.youtube.com/watch?v=SWHYrCXIL38&t=420s&ab_channel=JavaBrains), [Artigo explicando](https://springframework.guru/using-logback-spring-boot/)
-- Healtcheck endpoints: o que é? Como implementar? [Artigo](https://devkico.itexto.com.br/?p=3205) 
-- perfomance. Como fazer medidas no endpoint? [Estude sobre micrometer](https://www.youtube.com/watch?v=RAqG4XaTgv4&ab_channel=LinhVu)
+- Health check endpoints: o que é? Como implementar? [Artigo](https://devkico.itexto.com.br/?p=3205) 
+- performance. Como fazer medidas no endpoint? [Estude sobre micrometer](https://www.youtube.com/watch?v=RAqG4XaTgv4&ab_channel=LinhVu)
 - Docker CLI. [Containerize a Java application](https://docs.docker.com/guides/java/containerize/)
 
 Outros links também importante:
