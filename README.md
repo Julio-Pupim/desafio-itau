@@ -54,6 +54,7 @@ Para executar a aplicação utilizando Docker, siga os passos abaixo:
      docker run -p 8080:8080 desafio-itau-backend
      ```
    - A aplicação estará disponível em `http://localhost:8080`.
+<img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/96c203f0-d042-425f-9d7c-2bcd21472ff7" />
 
 ### Sem Docker
 
