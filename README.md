@@ -1,9 +1,7 @@
-# README - Desafio Técnico Itaú Backend
 [![Build Status](https://github.com/Julio-Pupim/desafio-itau/actions/workflows/maven.yml/badge.svg)](https://github.com/Julio-Pupim/desafio-itau/actions)
 ![Java](https://img.shields.io/badge/Java-21-blue)
-![License](https://img.shields.io/github/license/Julio-Pupim/desafio-itau)
-![Issues](https://img.shields.io/github/issues/Julio-Pupim/desafio-itau)
 [![Codecov](https://img.shields.io/codecov/c/github/Julio-Pupim/desafio-itau)](https://codecov.io/gh/Julio-Pupim/desafio-itau)
+# README - Desafio Técnico Itaú Backend
 
 Este projeto é uma solução para o [Desafio Técnico Itaú Backend](https://github.com/feltex/desafio-itau-backend?tab=readme-ov-file), desenvolvido em Java 21 com Spring Boot 3.4.3. A aplicação foi projetada para ser configurável, escalável e de fácil manutenção, seguindo as melhores práticas de desenvolvimento de software.
 
