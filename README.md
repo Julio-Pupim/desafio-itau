@@ -108,7 +108,7 @@ Veja abaixo um print da interface do Swagger:
 
 Para uma explicação detalhada sobre o projeto, incluindo a arquitetura, decisões de design e uma demonstração prática, assista ao vídeo abaixo:
 
-[Link para o vídeo no YouTube](https://www.youtube.com/link-do-video)
+[Futuro](https://www.youtube.com/link-do-video)
 
 ---
 
