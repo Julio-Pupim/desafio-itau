@@ -28,7 +28,6 @@ Este projeto tem como objetivo resolver 100% do [Desafio Técnico Itaú Backend]
 - **Estatísticas em Tempo Real:** Calcula soma, mínimo, máximo, média e contagem das transações dos últimos 60 segundos (tempo configurável).
 - **Validação de Dados:** Impede o cadastro de transações com valores negativos ou datas futuras.
 - **Gerenciamento de Dados:** Remove transações antigas automaticamente, garantindo performance e integridade.
-- 
 ---
 
 ## Formas de Rodar a Aplicação
